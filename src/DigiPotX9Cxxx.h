@@ -25,6 +25,8 @@ class DigiPot
   uint8_t get();
   void reset();
 
+  virtual void overwrite(uint8_t value) { this->_currentValue = constrain(value, 0, DIGIPOT_MAX_AMOUNT); }; //! no movement is performed
+
  private:
   uint8_t _incPin;
   uint8_t _udPin;
