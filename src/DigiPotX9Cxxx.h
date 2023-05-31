@@ -26,12 +26,16 @@ class DigiPot
   void reset();
 
   virtual void overwrite(uint8_t value) { this->_currentValue = constrain(value, 0, DIGIPOT_MAX_AMOUNT); }; //! no movement is performed
+  
+  virtual void setDelayMicros(uint16_t micros) { this->_delayMicros = micros; };
+  virtual uint16_t getDelayMicros() { return this->_delayMicros; };
 
  private:
   uint8_t _incPin;
   uint8_t _udPin;
   uint8_t _csPin;
   uint8_t _currentValue;
+  uint16_t _delayMicros = 2;
 };
 
 #endif
